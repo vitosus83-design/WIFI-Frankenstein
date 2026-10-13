@@ -756,7 +756,8 @@ class SettingsFragment : Fragment() {
         binding.buttonInstallChroot.setOnClickListener {
             val ct = chrootManager.getChrootType()
             if (ct is com.lsd.wififrankenstein.util.ChrootType.Rootless ||
-                ct is com.lsd.wififrankenstein.util.ChrootType.RootWithoutChroot
+                ct is com.lsd.wififrankenstein.util.ChrootType.RootWithoutChroot ||
+                ct == com.lsd.wififrankenstein.util.ChrootType.None
             ) {
                 startRootlessInstall()
             } else {
@@ -861,9 +862,9 @@ class SettingsFragment : Fragment() {
             }
 
             com.lsd.wififrankenstein.util.ChrootType.None -> {
-                binding.textViewChrootStatus.text = getString(R.string.root_required)
-                binding.buttonInstallChroot.visibility = View.GONE
-                binding.buttonInstallChroot.text = getString(R.string.install_chroot)
+                binding.textViewChrootStatus.text = getString(R.string.rootless_mode)
+                binding.buttonInstallChroot.visibility = View.VISIBLE
+                binding.buttonInstallChroot.text = getString(R.string.install_rootless)
                 binding.buttonReinstallChroot.visibility = View.GONE
                 binding.buttonMountChroot.visibility = View.GONE
                 binding.buttonUnmountChroot.visibility = View.GONE
