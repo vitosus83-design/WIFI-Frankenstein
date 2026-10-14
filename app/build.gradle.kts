@@ -22,7 +22,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.lsd.wififrankenstein"
+        applicationId = "com.lsd.wififrankenstein.rootless"
         minSdk = 21
         targetSdk = 37
         versionCode = 9
