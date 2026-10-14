@@ -19,6 +19,12 @@ jobs:
           distribution: temurin
           java-version: '21'
 
+      - name: Diagnose Android SDK
+        run: |
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          ls -la "$ANDROID_HOME/cmdline-tools"
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --list | grep -E 'platforms;android-(35|36|37)|build-tools;3[567]' || true
+
       - name: Install Android SDK
         run: |
           "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install "platforms;android-37" "build-tools;37.0.0"
